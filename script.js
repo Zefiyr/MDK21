@@ -4,59 +4,12 @@ const tickets = [
     { title: 'В коридоре не горит свет', room: 'Коридор, 2-й этаж', category: 'Другое', done: true }
 ];
 
-const root = document.querySelector('.body');
-
-const problemDiv = root.querySelector('.problem');
-const whereDiv = root.querySelector('.where');
-
-problemDiv.querySelector('input').id = 'title';
-problemDiv.querySelector('button').remove();
-
-whereDiv.querySelector('input').id = 'room';
-whereDiv.querySelector('button').remove();
-
-const categoryDiv = document.createElement('div');
-categoryDiv.className = 'category';
-categoryDiv.innerHTML =
-    '<label for="category">Категория</label>' +
-    '<select id="category">' +
-        '<option value="">Выберите категорию</option>' +
-        '<option value="Оборудование">Оборудование</option>' +
-        '<option value="Аудитория">Аудитория</option>' +
-        '<option value="Другое">Другое</option>' +
-    '</select>';
-root.insertBefore(categoryDiv, whereDiv.nextSibling);
-
-const addBtn = document.createElement('button');
-addBtn.id = 'addBtn';
-addBtn.textContent = 'Добавить заявку';
-categoryDiv.after(addBtn);
-
-const messageEl = document.createElement('p');
-messageEl.id = 'message';
-messageEl.className = 'message';
-addBtn.after(messageEl);
-
-const filtersDiv = document.createElement('div');
-filtersDiv.className = 'filters';
-filtersDiv.innerHTML =
-    '<label><input type="checkbox" id="onlyOpen"> Только открытые</label>' +
-    '<select id="categoryFilter">' +
-        '<option value="">Все категории</option>' +
-        '<option value="Оборудование">Оборудование</option>' +
-        '<option value="Аудитория">Аудитория</option>' +
-        '<option value="Другое">Другое</option>' +
-    '</select>';
-messageEl.after(filtersDiv);
-
-const listEl = document.createElement('ul');
-listEl.id = 'ticketsList';
-listEl.className = 'tickets';
-filtersDiv.after(listEl);
-
 const titleInput = document.getElementById('title');
 const roomInput = document.getElementById('room');
 const categorySelect = document.getElementById('category');
+const addBtn = document.getElementById('addBtn');
+const messageEl = document.getElementById('message');
+const listEl = document.getElementById('ticketsList');
 const onlyOpenCheckbox = document.getElementById('onlyOpen');
 const categoryFilter = document.getElementById('categoryFilter');
 

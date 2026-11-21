@@ -66,11 +66,3 @@ button {
 .ticket button {
     margin-right: 4px;
 }
-
-.ticket.open .status {
-    color: blue;
-}
-
-.ticket.done .status {
-    color: green;
-}

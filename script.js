@@ -1,8 +1,4 @@
-const tickets = [
-    { title: 'Проектор не включается', room: '203', category: 'Оборудование', done: false },
-    { title: 'Не закрывается окно', room: '105', category: 'Аудитория', done: false },
-    { title: 'В коридоре не горит свет', room: 'Коридор, 2-й этаж', category: 'Другое', done: true }
-];
+const tickets = [];
 
 const titleInput = document.getElementById('title');
 const roomInput = document.getElementById('room');
@@ -11,7 +7,6 @@ const addBtn = document.getElementById('addBtn');
 const messageEl = document.getElementById('message');
 const listEl = document.getElementById('ticketsList');
 const onlyOpenCheckbox = document.getElementById('onlyOpen');
-const categoryFilter = document.getElementById('categoryFilter');
 
 function renderTickets() {
     listEl.innerHTML = '';
@@ -29,7 +24,6 @@ function renderTickets() {
         const ticket = tickets[i];
 
         if (onlyOpenCheckbox.checked && ticket.done) continue;
-        if (categoryFilter.value && ticket.category !== categoryFilter.value) continue;
 
         shown++;
 
@@ -71,9 +65,7 @@ function renderTickets() {
 
     if (shown === 0) {
         const li = document.createElement('li');
-        li.textContent = (onlyOpenCheckbox.checked || categoryFilter.value)
-            ? 'Нет заявок по выбранным фильтрам'
-            : 'Открытых заявок нет';
+        li.textContent = 'Открытых заявок нет';
         listEl.append(li);
     }
 }
@@ -98,6 +90,5 @@ addBtn.addEventListener('click', function () {
 });
 
 onlyOpenCheckbox.addEventListener('change', renderTickets);
-categoryFilter.addEventListener('change', renderTickets);
 
 renderTickets();
